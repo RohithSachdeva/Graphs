@@ -1,0 +1,19 @@
+Day 1 Graphs:
+
+Recursive algorithms hard to understand at first 
+-Use UPER! 
+
+Graphs have no restrictions compared to linked lists and binary trees 
+
+Nodes can point to themselves! can loop etc...
+
+
+Nodes are connected by edges
+Can have weights on the edges... the pointers from nodes 
+*If not shown, assume weight is 1
+
+Edges can be directed or undirected (two way)
+-if no directed nodes, the graph is called an undirected graph
+
+
+
