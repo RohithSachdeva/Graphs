@@ -16,4 +16,65 @@ Edges can be directed or undirected (two way)
 -if no directed nodes, the graph is called an undirected graph
 
 
+Can think of certain paths and decisions and weights as influences... 
+Maybe its a city and the weight and direction associated with the nodes are one way streets or traffic etc.
+
+We will be visiting node hops this week... not the weights associated 
+
+Linked Lists
+-
+
+32 Mins
+-So what we're gonna do ... We're gonna mark a node as visited and keep moving on (infinite loop example)
+-Infinite loop = Cycle; If we traverse the nodes, will we reach the same one again
+
+*If a graph has any cycles in it; its a cyclic graph; So if there are any undirected nodes.. those are technically cyclic
+*Else its acyclic 
+
+The algorithms we come up with won't really care 
+
+Representation of Graphs
+------------------------
+-We want to know, which nodes are adjacent to a particular node; DIRECTLY connected
+-A vert can be adjacent to another one but sometimes its not vice versa 
+
+Adjaceny matrix 
+*Big grid that true/false values showing which nodes are adjacent
+    *Or edge weights
+
+
+
+    A ----> B <-----> C (C has a circular reference to itself)       
+     |       |
+      |      |
+        |    |
+         |   |
+          V  ∨
+             D
+
+
+Adjacency List           
+A: [B, D] 
+B: [D, C]
+C: [B, C]
+D: [] (empty set)
+
+Information we need to to create a graph like the one above it
+-If we wanted to include weight or something ... we would make those as objects 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
