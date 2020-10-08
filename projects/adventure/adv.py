@@ -27,6 +27,7 @@ player = Player(world.starting_room)
 
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
+
 traversal_path = []
 
 
@@ -60,3 +61,21 @@ while True:
         break
     else:
         print("I did not understand that command.")
+
+
+
+"""
+Use whichever methods... BFT or DFT 
+
+BFS -> BFT?  
+
+Incomplete list of directions: ... N S E W  Cardinal ones
+
+Add cardinal directions for moving between rooms 
+
+Can comment out the test to walk around manually
+
+Breadth offers the least amount of back tracking?  
+
+
+"""
