@@ -32,6 +32,34 @@ player = Player(world.starting_room)
 traversal_path = []
 
 
+traversed = {}
+reverse = []
+rooms_todo = []
+
+while len(room_graph) > len(traversed):
+    current_room = player.current_room.id
+    choices = player.current_room.get_exits()
+    rooms_todo.append(current_room)
+
+    if current_room not in traversed:
+        traversed[current_room] = choices
+
+    if len(traversed[current_room]) > 0:
+        x = traversed[current_room].pop()
+        traversal_path.append(x)
+        reverse.append #append these direction but inverted 
+
+        """
+        how can invert the cardinal directions?  .. so a dictionary where n = s ... or create a function but not sure how to utilize it .. anyways figure it out tomorrw 
+
+        have player.travel(x)
+
+        else: 
+            pop the newly reverse array and append it to traversal path and have player travel that and that should travel all the rooms.. well see if its under 2000 moves
+        """
+
+
+
 
 
 

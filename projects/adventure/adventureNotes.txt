@@ -61,17 +61,107 @@ DFT (Stack .. PUSH/POP)
 Add current room to the queue
 
 So what sets/dictionaries do we need?  
+visited = {}
+reverse = []
+rooms_todo = []
 
+We could create a reverse function 
 
+def reverse(self, direction):
+    if direction == "n":
+        return "s"
 
+etc
 
+or reverse = inverted dictionary
+
+So how can we reverse the DFT while exploring different paths on the way back... then eventually when you hit the first node you set off to other directions?  ... Is that a good solution?  
+
+So basically back to the use a BFS hint to explore the different paths?  
 
 While you haven't explored 500 rooms ... continue your search.  
 
 Mix of Pseudocode and code:
     visited = {}
 
+
+(Change first_room variable name; if len(visited_rooms) == len(room_graph); don't need to use 500 )
+
     While 500 >= len(visited)
+        first_room = player.current_room.id #set first room
+        choices = player.current_room.get_exits() #see which way we can go
+        rooms_todo = ??
+
+        if current room not in visited 
+            get the current room's exit
+
+        Now we need to pop in our DFT cycle... append that to the traversal path 
+
+        append to the reverse array ... with the cardinal directions inverted?? 
+
+        use the travel method to go to the popped room 
+
+    else 
+        pop the rooms in the appended reverse array .. 
+        append that to the traversal array so now its in the Stack
+        player travel reverse.pop 
+
+Something like this lol 
+
+
+        
 
 
 """
+
+def dft(self, starting_vertex):
+        """
+        Print each vertex in depth-first order
+        beginning from starting_vertex.
+        """
+        q = Stack()
+        visited = set()
+		# Init:
+        q.push(starting_vertex)
+		# While queue isn't empty
+        while q.size() > 0:
+            v = q.pop()
+            if v not in visited:
+                print(v)   # "Visit" the node
+                visited.add(v)
+                for neighbor in self.get_neighbors(v):
+                    q.push(neighbor)
+
+def bfs(self, starting_vertex, destination_vertex):
+        """
+        Return a list containing the shortest path from
+        starting_vertex to destination_vertex in
+        breath-first order.
+        """
+        # Create an empty queue and enqueue A PATH TO the starting vertex ID
+        q = Queue()
+        q.enqueue([starting_vertex])
+        # Create a set to store visited vertices
+        visited = set()
+        # While the queue is not empty...
+        while q.size() > 0:
+            # Dequeue the first PATH
+            path = q.dequeue()
+            # Grab the last vertex from the PATH
+            v = path[-1]
+            # If vertext = target
+            if v == destination_vertex:
+                # Return path
+                return path
+            # IF that vertex has not been visited:
+            if v not in visited:
+                # mark it as visited
+                visited.add(v)
+                # Then add A PATH TO all of its neighbors to the back of the queue
+                for neighbor in self.vertices[v]:
+                    # Copy the path
+                    path_copy = list(path)
+                    # Append neighbor to the back of the copy
+                    path_copy.append(neighbor)
+                    # Enqueue copy
+                    q.enqueue(path_copy)
