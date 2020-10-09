@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from world import World
+from util import Stack, Queue
 
 import random
 from ast import literal_eval
@@ -29,6 +30,15 @@ player = Player(world.starting_room)
 # traversal_path = ['n', 'n']
 
 traversal_path = []
+
+
+
+
+
+
+
+
+
 
 
 
@@ -64,18 +74,3 @@ while True:
 
 
 
-"""
-Use whichever methods... BFT or DFT 
-
-BFS -> BFT?  
-
-Incomplete list of directions: ... N S E W  Cardinal ones
-
-Add cardinal directions for moving between rooms 
-
-Can comment out the test to walk around manually
-
-Breadth offers the least amount of back tracking?  
-
-
-"""
