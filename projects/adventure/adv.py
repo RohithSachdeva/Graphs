@@ -14,7 +14,7 @@ world = World()
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
 # map_file = "maps/test_loop_fork.txt"
-map_file = "maps/main_maze.txt"
+map_file = "projects/adventure/maps/main_maze.txt"
 
 # Loads the map into a dictionary
 room_graph=literal_eval(open(map_file, "r").read())
@@ -28,6 +28,36 @@ player = Player(world.starting_room)
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 traversal_path = []
+traversed = {}
+reverse = []
+reverseCardinal = {"n":"s", "s":"n", "e":"w", "w":"e"}
+
+while len(room_graph) > len(traversed):
+    #While there are rooms unexplored
+    current_room = player.current_room.id #Get current room
+    choices = player.current_room.get_exits() #See possible edges of node 
+
+    if current_room not in traversed:
+        traversed[current_room] = choices #If it hasn't been explored, view its cardinal choices/exits.
+    
+    if len(traversed[current_room]) > 0:
+        #While there are unexplored exits in your current room
+        x = traversed[current_room].pop()
+        #Pop the room into the stack of the traversed array; we will check this room while there are previous rooms in the stack.  This stack of rooms is kept in a separate array than the main path.  
+        traversal_path.append(x)
+        #Append the popped object to the main traversal path list
+        reverse.append(reverseCardinal[x])
+        #Append the reversed direction to a separate list that will execute if you reach a dead end 
+        player.travel(x)
+        #Travel to the popped room
+    else:
+        #When there are no rooms to be explored; start back tracking with inverted directions
+        rev = reverse.pop()
+        traversal_path.append(rev) #Append this to your main path to leave the deadend room
+        player.travel(rev) #Travel in reverse
+
+    
+
 
 
 
